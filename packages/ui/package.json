@@ -1,12 +1,24 @@
 {
   "name": "@rikkora/ui",
   "version": "0.1.0",
-  "private": true,
+  "description": "React components with TypeScript, CSS Modules, and light and dark themes.",
   "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RezyJS/rikkora.git",
+    "directory": "packages/ui"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "vite build",
     "dev": "vite build --watch",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepack": "pnpm typecheck && pnpm build"
   },
   "files": [
     "dist"

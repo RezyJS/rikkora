@@ -1,3 +1,4 @@
+:root:not([data-rkr-theme]),
 [data-rkr-theme='violet-smoke-light'] {
   color-scheme: light;
   /* Backgrounds */
