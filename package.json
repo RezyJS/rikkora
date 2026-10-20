@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "concurrently -k -n ui,docs \"pnpm --filter @rikkora/ui dev\" \"pnpm --filter ./apps/docs dev\"",
     "build": "pnpm --filter @rikkora/ui build && pnpm --filter ./apps/docs build",
-    "typecheck": "pnpm --filter @rikkora/ui typecheck && pnpm --filter ./apps/docs exec tsc -b"
+    "typecheck": "pnpm --filter @rikkora/ui typecheck && pnpm --filter ./apps/docs exec tsc -b",
+    "check:ui": "pnpm --filter @rikkora/ui typecheck && pnpm --filter @rikkora/ui build"
   },
   "devDependencies": {
     "concurrently": "^10.0.6"
