@@ -1,0 +1,9 @@
+.page {
+  min-height: 100svh;
+
+  background-color: var(--rkr-color-bg-primary);
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--rkr-color-action-primary) 9.5%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--rkr-color-action-primary) 9.5%, transparent) 1px, transparent 1px);
+  background-size: var(--rkr-spacing-10) var(--rkr-spacing-10);
+}

@@ -1,14 +1,5 @@
-import { RIKKORA_VERSION } from '@rikkora/ui';
-import './App.css';
+import { Home } from './pages/Home/Home';
 
 export default function App() {
-  return (
-    <div
-      data-rkr-theme='violet-smoke'
-      className='app'
-    >
-      <h1>Rikkora UI</h1>
-      <p>Library version: {RIKKORA_VERSION}</p>
-    </div>
-  );
+  return <Home />;
 }

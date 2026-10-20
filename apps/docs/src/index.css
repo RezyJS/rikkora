@@ -14,6 +14,6 @@ body {
   background: var(--rkr-color-bg-primary);
   color: var(--rkr-color-text-primary);
 
-  font-family: Inter, system-ui, sans-serif;
+  font-family: var(--rkr-font-family);
   -webkit-font-smoothing: antialiased;
 }

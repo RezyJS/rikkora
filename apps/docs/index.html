@@ -1,13 +1,60 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-rkr-theme="violet-smoke-light">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>docs</title>
+    <script>
+      (() => {
+        let theme;
+        let language;
+        try {
+          theme = localStorage.getItem('rikkora.theme');
+          language = localStorage.getItem('rikkora.language');
+        } catch { /* Storage may be unavailable. */ }
+        const dark = theme === 'dark' || (theme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.dataset.rkrTheme = dark ? 'violet-smoke' : 'violet-smoke-light';
+        document.documentElement.lang = language === 'ru' || language === 'en'
+          ? language
+          : (navigator.language.toLowerCase().split('-')[0] === 'ru' ? 'ru' : 'en');
+        document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+      })();
+    </script>
+    <title>Rikkora UI</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/favicon.ico"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon-16x16.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/apple-touch-icon.png"
+    />
+    <link
+      rel="manifest"
+      href="/site.webmanifest"
+    />
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script
+      type="module"
+      src="/src/main.tsx"
+    ></script>
   </body>
 </html>
