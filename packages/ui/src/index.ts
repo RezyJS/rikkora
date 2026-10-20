@@ -1,4 +1,4 @@
-export const RIKKORA_VERSION = '0.0.0';
+export const RIKKORA_VERSION = '0.1.0';
 
 export { Textarea } from './components/Textarea';
 export type { TextareaProps } from './components/Textarea';
