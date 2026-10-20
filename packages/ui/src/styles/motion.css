@@ -1,0 +1,22 @@
+:root {
+  /* Durations */
+  --rkr-duration-instant: 0ms;
+  --rkr-duration-fast: 100ms;
+  --rkr-duration-normal: 160ms;
+  --rkr-duration-moderate: 240ms;
+  --rkr-duration-slow: 320ms;
+
+  /* Easing */
+  --rkr-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --rkr-ease-enter: cubic-bezier(0, 0, 0, 1);
+  --rkr-ease-exit: cubic-bezier(0.3, 0, 1, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --rkr-duration-fast: 0ms;
+    --rkr-duration-normal: 0ms;
+    --rkr-duration-moderate: 0ms;
+    --rkr-duration-slow: 0ms;
+  }
+}

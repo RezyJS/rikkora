@@ -1,0 +1,51 @@
+:root {
+  --rkr-spacing-0: 0;
+
+  /* Quarter steps */
+  --rkr-spacing-0-25: 0.0625rem;
+  --rkr-spacing-0-5: 0.125rem;
+  --rkr-spacing-0-75: 0.1875rem;
+
+  --rkr-spacing-1: 0.25rem;
+  --rkr-spacing-1-25: 0.3125rem;
+  --rkr-spacing-1-5: 0.375rem;
+  --rkr-spacing-1-75: 0.4375rem;
+
+  --rkr-spacing-2: 0.5rem;
+  --rkr-spacing-2-25: 0.5625rem;
+  --rkr-spacing-2-5: 0.625rem;
+  --rkr-spacing-2-75: 0.6875rem;
+
+  --rkr-spacing-3: 0.75rem;
+  --rkr-spacing-3-25: 0.8125rem;
+  --rkr-spacing-3-5: 0.875rem;
+  --rkr-spacing-3-75: 0.9375rem;
+
+  /* Standard scale */
+  --rkr-spacing-4: 1rem;
+  --rkr-spacing-5: 1.25rem;
+  --rkr-spacing-6: 1.5rem;
+  --rkr-spacing-7: 1.75rem;
+  --rkr-spacing-8: 2rem;
+  --rkr-spacing-9: 2.25rem;
+  --rkr-spacing-10: 2.5rem;
+  --rkr-spacing-11: 2.75rem;
+  --rkr-spacing-12: 3rem;
+  --rkr-spacing-14: 3.5rem;
+  --rkr-spacing-16: 4rem;
+  --rkr-spacing-20: 5rem;
+  --rkr-spacing-24: 6rem;
+  --rkr-spacing-28: 7rem;
+  --rkr-spacing-32: 8rem;
+  --rkr-spacing-36: 9rem;
+  --rkr-spacing-40: 10rem;
+  --rkr-spacing-44: 11rem;
+  --rkr-spacing-48: 12rem;
+  --rkr-spacing-52: 13rem;
+  --rkr-spacing-56: 14rem;
+  --rkr-spacing-60: 15rem;
+  --rkr-spacing-64: 16rem;
+  --rkr-spacing-72: 18rem;
+  --rkr-spacing-80: 20rem;
+  --rkr-spacing-96: 24rem;
+}

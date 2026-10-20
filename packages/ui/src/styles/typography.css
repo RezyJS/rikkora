@@ -1,0 +1,26 @@
+:root {
+  /* Font families */
+  --rkr-font-family: 'Onest', system-ui, sans-serif;
+  --rkr-font-family-mono: ui-monospace, monospace;
+
+  /* Font sizes */
+  --rkr-font-size-xs: 0.75rem; /* 12px */
+  --rkr-font-size-sm: 0.875rem; /* 14px */
+  --rkr-font-size-md: 1rem; /* 16px */
+  --rkr-font-size-lg: 1.125rem; /* 18px */
+  --rkr-font-size-xl: 1.25rem; /* 20px */
+  --rkr-font-size-2xl: 1.5rem; /* 24px */
+  --rkr-font-size-3xl: 1.875rem; /* 30px */
+  --rkr-font-size-4xl: 2.25rem; /* 36px */
+
+  /* Font weights */
+  --rkr-font-weight-regular: 400;
+  --rkr-font-weight-medium: 500;
+  --rkr-font-weight-semibold: 600;
+  --rkr-font-weight-bold: 700;
+
+  /* Line heights */
+  --rkr-line-height-tight: 1.25;
+  --rkr-line-height-normal: 1.5;
+  --rkr-line-height-relaxed: 1.75;
+}

@@ -1,0 +1,18 @@
+[data-rkr-theme] {
+  /* Backgrounds */
+  --rkr-color-bg-primary: var(--rkr-palette-bg);
+  --rkr-color-bg-surface: var(--rkr-palette-surface);
+  --rkr-color-bg-elevated: var(--rkr-palette-elevated);
+
+  /* Borders */
+  --rkr-color-border-default: var(--rkr-palette-border);
+
+  /* Text */
+  --rkr-color-text-primary: var(--rkr-palette-text);
+  --rkr-color-text-secondary: var(--rkr-palette-text-muted);
+  --rkr-color-text-tertiary: var(--rkr-palette-text-subtle);
+
+  /* Interactive */
+  --rkr-color-action-primary: var(--rkr-palette-accent);
+  --rkr-color-action-primary-hover: var(--rkr-palette-accent-hover);
+}

@@ -1,0 +1,18 @@
+[data-rkr-theme='violet-smoke'] {
+  /* Backgrounds */
+  --rkr-palette-bg: #100f11;
+  --rkr-palette-surface: #1c191e;
+  --rkr-palette-elevated: #29252d;
+
+  /* Borders */
+  --rkr-palette-border: #403945;
+
+  /* Accent */
+  --rkr-palette-accent: #9278ff;
+  --rkr-palette-accent-hover: #a58fff;
+
+  /* Text */
+  --rkr-palette-text: #f2f0f4;
+  --rkr-palette-text-muted: #a9a1ae;
+  --rkr-palette-text-subtle: #736b79;
+}

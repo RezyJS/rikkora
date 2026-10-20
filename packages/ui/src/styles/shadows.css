@@ -1,0 +1,11 @@
+[data-rkr-theme] {
+  --rkr-shadow-none: none;
+
+  --rkr-shadow-sm: 0 2px 4px rgb(0 0 0 / 12%);
+
+  --rkr-shadow-md: 0 4px 12px rgb(0 0 0 / 20%);
+
+  --rkr-shadow-lg: 0 8px 24px rgb(0 0 0 / 28%);
+
+  --rkr-shadow-xl: 0 16px 48px rgb(0 0 0 / 36%);
+}

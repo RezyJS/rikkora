@@ -1,0 +1,12 @@
+:root {
+  --rkr-radius-none: 0;
+
+  --rkr-radius-xs: 0.125rem; /* 2px */
+  --rkr-radius-sm: 0.25rem; /* 4px */
+  --rkr-radius-md: 0.5rem; /* 8px */
+  --rkr-radius-lg: 0.75rem; /* 12px */
+  --rkr-radius-xl: 1rem; /* 16px */
+  --rkr-radius-2xl: 1.5rem; /* 24px */
+
+  --rkr-radius-full: 9999px;
+}

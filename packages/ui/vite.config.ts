@@ -15,6 +15,7 @@ export default defineConfig({
       entry: resolve(import.meta.dirname, 'src/index.ts'),
       formats: ['es'],
       fileName: 'index',
+      cssFileName: 'styles',
     },
 
     rollupOptions: {
