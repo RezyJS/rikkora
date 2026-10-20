@@ -1,0 +1,29 @@
+[data-rkr-theme='violet-smoke-light'] {
+  color-scheme: light;
+  /* Backgrounds */
+  --rkr-palette-bg: #fafafd;
+  --rkr-palette-surface: #ffffff;
+  --rkr-palette-elevated: #f0f0f6;
+
+  /* Borders */
+  --rkr-palette-border: #eaeaef;
+
+  /* Accent */
+  --rkr-palette-accent: #5b5fd3;
+  --rkr-palette-accent-hover: #5054c4;
+  --rkr-palette-on-accent: #ffffff;
+
+  /* Danger */
+  --rkr-palette-danger: #b94458;
+  --rkr-palette-danger-hover: #a3394c;
+  --rkr-palette-on-danger: #ffffff;
+
+  /* Interactive surfaces */
+  --rkr-palette-surface-hover: #e6e6ef;
+  --rkr-palette-border-hover: #c8c8d6;
+
+  /* Text */
+  --rkr-palette-text: #191922;
+  --rkr-palette-text-muted: #575967;
+  --rkr-palette-text-subtle: #818196;
+}

@@ -1,4 +1,5 @@
 [data-rkr-theme='violet-smoke'] {
+  color-scheme: dark;
   /* Backgrounds */
   --rkr-palette-bg: #100f11;
   --rkr-palette-surface: #1c191e;
@@ -8,8 +9,18 @@
   --rkr-palette-border: #403945;
 
   /* Accent */
-  --rkr-palette-accent: #9278ff;
-  --rkr-palette-accent-hover: #a58fff;
+  --rkr-palette-accent: #5b5fd3;
+  --rkr-palette-accent-hover: #6468d8;
+  --rkr-palette-on-accent: #ffffff;
+
+  /* Danger */
+  --rkr-palette-danger: #b94458;
+  --rkr-palette-danger-hover: #d05468;
+  --rkr-palette-on-danger: #ffffff;
+
+  /* Interactive surfaces */
+  --rkr-palette-surface-hover: #38323d;
+  --rkr-palette-border-hover: #514857;
 
   /* Text */
   --rkr-palette-text: #f2f0f4;

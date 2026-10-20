@@ -15,4 +15,13 @@
   /* Interactive */
   --rkr-color-action-primary: var(--rkr-palette-accent);
   --rkr-color-action-primary-hover: var(--rkr-palette-accent-hover);
+
+  --rkr-color-action-on-primary: var(--rkr-palette-on-accent);
+
+  --rkr-color-action-danger: var(--rkr-palette-danger);
+  --rkr-color-action-danger-hover: var(--rkr-palette-danger-hover);
+  --rkr-color-action-on-danger: var(--rkr-palette-on-danger);
+
+  --rkr-color-bg-surface-hover: var(--rkr-palette-surface-hover);
+  --rkr-color-border-hover: var(--rkr-palette-border-hover);
 }
