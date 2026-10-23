@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { ComponentName } from './catalog';
+import type { ComponentName } from "./componentNames";
 import { configureExample, type ExampleConfiguration } from './exampleConfiguration';
 
 export function ConfiguredExample({ children, name, configuration, text, onChange }: {

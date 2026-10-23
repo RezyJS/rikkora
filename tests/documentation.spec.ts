@@ -4,6 +4,7 @@ import { resolve } from 'node:path';
 import { componentDocs } from '../apps/docs/src/pages/Documentation/componentDocs';
 import { individualProps, propExample } from '../apps/docs/src/pages/Documentation/propExamples';
 import { componentNames } from '../apps/docs/src/components/Showcase/catalog';
+import { introPages } from '../apps/docs/src/pages/Documentation/introPages';
 
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {
@@ -23,6 +24,9 @@ test('documentation covers every public catalog entry and all usage examples typ
       resolve('apps/docs/src/testing', `doc-${doc.slug}-${partIndex}-${index}.tsx`).replaceAll('\\', '/'), propExample(doc, part.name, property),
     ])),
   ]));
+  for (const page of introPages) for (const section of page.sections) {
+    if (section.code) sources.set(resolve('apps/docs/src/testing', `intro-${page.id}-${section.id}.tsx`).replaceAll('\\', '/'), section.code);
+  }
   const options = {
     noEmit: true, strict: true, skipLibCheck: true, types: [],
     target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext,
@@ -77,7 +81,7 @@ test('search filters navigation without losing the current page and handles empt
   await expect(nav.getByText('No components found.')).toBeVisible();
   await expect(page.getByRole('heading', { level: 1, name: 'Dialog' })).toBeVisible();
   await search.fill('');
-  await expect(nav.getByRole('link')).toHaveCount(componentNames.length + 1);
+  await expect(nav.getByRole('link')).toHaveCount(componentNames.length + 1 + introPages.length);
 });
 
 test('deep links survive reload, navigate backwards and keep API anchors', async ({ page }) => {
@@ -152,4 +156,41 @@ test('overview, legacy components link and missing routes resolve within docs', 
   await expect(page.getByRole('heading', { name: 'Page not found', level: 1 })).toBeVisible();
   await page.getByRole('link', { name: 'Back to documentation' }).click();
   await expect(page).toHaveURL('/docs');
+});
+
+test('getting started links open About us and Recipes with matching anchors and history', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto('/docs');
+  const navigation = page.getByRole('navigation', { name: 'Documentation navigation' });
+  await navigation.getByRole('link', { name: 'About us', exact: true }).click();
+  await expect(page).toHaveURL('/docs/about');
+  await expect(page.getByRole('heading', { level: 1, name: 'About us' })).toBeFocused();
+  await expect(navigation.getByRole('link', { name: 'About us', exact: true })).toHaveAttribute('aria-current', 'page');
+  await page.getByRole('navigation', { name: 'On this page' }).getByRole('link', { name: 'What matters to us' }).click();
+  await expect(page).toHaveURL('/docs/about#principles');
+  await page.reload();
+  await expect(page.getByRole('heading', { name: 'What matters to us', exact: true })).toBeInViewport();
+  await navigation.getByRole('link', { name: 'Recipes', exact: true }).click();
+  await expect(page.getByRole('heading', { level: 1, name: 'Recipes' })).toBeFocused();
+  await expect(page.getByRole('button', { name: 'Copy code', exact: true })).toHaveCount(3);
+  await page.getByRole('navigation', { name: 'On this page' }).getByRole('link', { name: 'A notification after saving' }).click();
+  await expect(page).toHaveURL('/docs/recipes#notifications');
+  await expect(page.getByRole('heading', { name: 'A notification after saving', exact: true })).toBeInViewport();
+  await page.goBack();
+  await page.goBack();
+  await expect(page).toHaveURL('/docs/about#principles');
+});
+
+test('new Getting started pages are localized and reachable from the mobile menu', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/docs/about');
+  await page.locator('header').getByRole('button', { name: 'Switch to Russian' }).click();
+  await expect(page.getByRole('heading', { level: 1, name: 'О нас' })).toBeVisible();
+  await page.getByRole('button', { name: 'Компоненты', exact: true }).click();
+  const drawer = page.getByRole('dialog');
+  await drawer.getByRole('link', { name: 'Рецепты', exact: true }).click();
+  await expect(drawer).toBeHidden();
+  await expect(page.getByRole('heading', { level: 1, name: 'Рецепты' })).toBeFocused();
+  await expect(page.getByRole('heading', { name: 'Форма с валидацией', exact: true })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });

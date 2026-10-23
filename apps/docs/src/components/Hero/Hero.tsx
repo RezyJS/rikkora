@@ -1,4 +1,5 @@
-import { Box, Heading, Text, Link } from '@rikkora/ui';
+import { IconArrowUpRight } from '@tabler/icons-react';
+import { Box, Heading, Text, ButtonLink } from '@rikkora/ui';
 import { Link as RouterLink } from 'react-router';
 import { ScrollIndicator } from '../ScrollIndicator/ScrollIndicator';
 
@@ -9,37 +10,52 @@ import { usePreferences } from '../../preferences/PreferencesContext';
 export function Hero() {
   const { t } = usePreferences();
   return (
-    <Box as='section'
+    <Box
+      as='section'
       className={styles.hero}
       aria-labelledby='hero-title'
     >
       <Box className={styles.container}>
         <Box className={styles.content}>
-          <Box as='span' className={styles.eyebrow}>{t.eyebrow}</Box>
+          <Box
+            as='span'
+            className={styles.eyebrow}
+          >
+            {t.eyebrow}
+          </Box>
 
-          <Heading level={1}
+          <Heading
+            level={1}
             id='hero-title'
             className={styles.title}
           >
             rikkora<Box as='span'>.</Box>
           </Heading>
 
-          <Text as='p' className={styles.description}>
-            {t.heroBefore}<Box as='span'>{t.heroName}</Box>{t.heroAfter}
+          <Text
+            as='p'
+            className={styles.description}
+          >
+            {t.heroBefore}
+            <Box as='span'>{t.heroName}</Box>
+            {t.heroAfter}
           </Text>
 
-          <Link as={RouterLink}
+          <ButtonLink
+            radius='lg'
+            as={RouterLink}
             to='/docs/components'
             className={styles.cta}
           >
             {t.explore}
-            <Box as='span' aria-hidden='true'>↗</Box>
-          </Link>
+            <IconArrowUpRight size={16} stroke={1.7} aria-hidden='true' focusable='false' />
+          </ButtonLink>
         </Box>
       </Box>
 
       <Box className={styles.artwork}>
-        <Box as='img'
+        <Box
+          as='img'
           src={rikka}
           alt={t.mascot}
           className={styles.rikka}

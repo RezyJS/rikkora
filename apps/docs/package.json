@@ -19,6 +19,7 @@
     "@fontsource-variable/onest": "^5.3.1",
     "@lezer/highlight": "^1.2.5",
     "@rikkora/ui": "workspace:*",
+    "@tabler/icons-react": "3.49.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-router": "^8.5.0"

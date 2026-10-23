@@ -71,6 +71,9 @@
 }
 
 .cta {
+  --rkr-button-gap: var(--rkr-spacing-4);
+  --rkr-button-bg-hover: var(--rkr-color-action-primary);
+  --rkr-button-border-hover: transparent;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -79,6 +82,7 @@
   min-height: 52px;
   padding: 0 var(--rkr-spacing-6);
 
+  border: 1px solid transparent;
   border-radius: var(--rkr-radius-lg);
   background: var(--rkr-color-text-primary);
 

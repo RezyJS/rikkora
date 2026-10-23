@@ -1,6 +1,6 @@
 import { Children, cloneElement, isValidElement, type ReactNode } from 'react';
 import * as UI from '@rikkora/ui';
-import type { ComponentName } from './catalog';
+import type { ComponentName } from "./componentNames";
 
 export type ExampleConfiguration = Record<string, Record<string, unknown>>;
 
@@ -23,7 +23,7 @@ export function configureExample(
     const settings = part ? configuration[part] ?? {} : {};
     const props: Record<string, unknown> = { ...settings };
     if (part === name && ['Checkbox', 'Switch'].includes(name)) {
-      props.checked = settings.checked ?? node.props.checked ?? node.props.defaultChecked ?? false;
+      props.checked = settings.checked ?? settings.defaultChecked ?? node.props.checked ?? node.props.defaultChecked ?? false;
       props.defaultChecked = undefined;
       if (!node.props.onChange || 'checked' in settings) props.onChange = (event: { target: { checked: boolean } }) => onChange?.(part, 'checked', event.target.checked);
     }

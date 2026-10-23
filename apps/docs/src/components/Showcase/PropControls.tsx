@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Box, Field, Heading, Input, Select, Stack, Switch, Text, Textarea } from '@rikkora/ui';
+import { Box, Field, Heading, Input, Select, Stack, Switch, Textarea } from '@rikkora/ui';
 import { componentDocs, type ApiProp } from '../../pages/Documentation/componentDocs';
-import { individualProps } from '../../pages/Documentation/propExamples';
-import type { ComponentName } from './catalog';
+import { individualProps } from '../../pages/Documentation/prop-examples/propertyNavigation';
+import type { ComponentName } from "./componentNames";
 import type { ExampleConfiguration } from './exampleConfiguration';
 
 const structured = ['options', 'imageProps', 'viewportProps', 'style'];
@@ -31,7 +31,7 @@ function editable(property: ApiProp) {
     && !property.name.startsWith('on') && !property.type.includes('=>')
     && (property.type === 'boolean' || property.type === 'number' || property.type === 'string'
       || property.type === 'ReactNode' || property.type.includes("'") || property.type === 'number | string'
-      || ['value', 'padding', 'level', 'as', 'type', 'className', ...structured].includes(property.name));
+      || ['value', 'padding', 'paddingX', 'paddingY', 'level', 'as', 'type', 'className', ...structured].includes(property.name));
 }
 
 export function PropControls({ name, configuration, onChange, ru }: {
@@ -40,10 +40,10 @@ export function PropControls({ name, configuration, onChange, ru }: {
 }) {
   const doc = componentDocs.find((entry) => entry.name === name)!;
   return <Stack gap={5}>{doc.api.filter((part) => !['CSS variables', 'ToastMessage', 'useToast()'].includes(part.name)).map((part) => {
-    const existingControls = ['Button', 'IconButton', 'Input', 'Textarea', 'Checkbox', 'Flex', 'Grid'].includes(name)
+    const existingControls = ['Button', 'Input', 'Textarea', 'Checkbox', 'Flex', 'Grid'].includes(name)
       ? ['variant', 'size', 'disabled', 'loading', 'required', 'checked', 'columns', 'direction'] : [];
     const properties = individualProps(part.props).filter((property) => editable(property) && !existingControls.includes(property.name)
-      && !(name === 'Link' && property.name === 'as'));
+      && !(['Link', 'ButtonLink'].includes(name) && property.name === 'as'));
     const target = part.name.split(' / ')[0];
     if (!properties.length) return null;
     return <Stack gap={3} key={part.name}>
@@ -76,5 +76,5 @@ export function PropControls({ name, configuration, onChange, ru }: {
         </Field>;
       })}
     </Stack>;
-  })}<Text as='p' size='xs' tone='secondary'>{ru ? 'События проверяются взаимодействием с примером. Объекты задаются в JSON. Использование ref и функций показано в примерах свойств.' : 'Trigger events by interacting with the example. Enter objects as JSON. Refs and functions are covered in the property examples.'}</Text></Stack>;
+  })}</Stack>;
 }

@@ -1,3 +1,4 @@
+import { IconArrowUpRight } from '@tabler/icons-react';
 import { Link as RouterLink } from 'react-router';
 import { Box, Flex, Heading, Link, ToastProvider } from '@rikkora/ui';
 import { usePreferences } from '../../preferences/PreferencesContext';
@@ -48,7 +49,7 @@ export function Showcase() {
             as={RouterLink}
             to='/docs/components/button'
           >
-            {ru ? 'Все компоненты' : 'All components'} ↗
+            {ru ? 'Все компоненты' : 'All components'} <IconArrowUpRight size={16} aria-hidden='true' focusable='false' />
           </Link>
         </Flex>
       </Box>
