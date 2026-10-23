@@ -19,7 +19,7 @@ export default defineConfig({
     },
 
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      external: (id) => /^(react|react-dom)(\/|$)/.test(id) || id.startsWith('@radix-ui/'),
     },
   },
 });
