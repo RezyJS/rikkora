@@ -26,5 +26,7 @@
   /* Text */
   --rkr-palette-text: #191922;
   --rkr-palette-text-muted: #575967;
-  --rkr-palette-text-subtle: #818196;
+  --rkr-palette-text-subtle: #6c6c80;
+  --rkr-palette-danger-text: #a33449;
+  --rkr-palette-action-text: #5054c4;
 }

@@ -1,0 +1,5 @@
+.field { display: flex; flex-direction: column; gap: var(--rkr-spacing-2); min-width: 0; font: var(--rkr-font-size-md)/var(--rkr-line-height-normal) var(--rkr-font-family); color: var(--rkr-color-text-primary); }
+.label { font-weight: var(--rkr-font-weight-medium); }
+.hint, .error { font-size: var(--rkr-font-size-sm); }
+.hint { color: var(--rkr-color-text-secondary); }
+.error { color: var(--rkr-color-text-danger); }

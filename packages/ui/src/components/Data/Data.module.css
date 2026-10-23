@@ -1,0 +1,6 @@
+.table { width: 100%; border-collapse: collapse; color: var(--rkr-color-text-primary); font: var(--rkr-font-size-md)/var(--rkr-line-height-normal) var(--rkr-font-family); }
+.table th, .table td { padding: var(--rkr-spacing-3) var(--rkr-spacing-4); border-bottom: 1px solid var(--rkr-color-border-default); text-align: start; }
+.table th { font-weight: var(--rkr-font-weight-semibold); }
+.table caption { padding-block: var(--rkr-spacing-3); text-align: start; color: var(--rkr-color-text-secondary); }
+.pagination, .pageItem { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--rkr-spacing-1); }
+.ellipsis { padding-inline: var(--rkr-spacing-2); color: var(--rkr-color-text-secondary); }

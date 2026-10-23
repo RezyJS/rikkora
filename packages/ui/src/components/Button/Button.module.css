@@ -93,7 +93,7 @@
 
 .ghost {
   --rkr-button-bg: transparent;
-  --rkr-button-color: var(--rkr-color-action-primary-hover);
+  --rkr-button-color: var(--rkr-color-text-action);
   --rkr-button-border: transparent;
 
   --rkr-button-bg-hover: var(--rkr-color-bg-elevated);

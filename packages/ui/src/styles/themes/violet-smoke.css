@@ -25,5 +25,7 @@
   /* Text */
   --rkr-palette-text: #f2f0f4;
   --rkr-palette-text-muted: #a9a1ae;
-  --rkr-palette-text-subtle: #736b79;
+  --rkr-palette-text-subtle: #a096a8;
+  --rkr-palette-danger-text: #f18b9b;
+  --rkr-palette-action-text: #adb0ff;
 }

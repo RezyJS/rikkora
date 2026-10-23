@@ -1,0 +1,17 @@
+.tabs, .accordion { width: 100%; color: var(--rkr-color-text-primary); font-family: var(--rkr-font-family); }
+.tabList { display: flex; gap: var(--rkr-spacing-1); border-bottom: 1px solid var(--rkr-color-border-default); }
+.tabList[data-orientation='vertical'] { flex-direction: column; border-bottom: 0; border-inline-end: 1px solid var(--rkr-color-border-default); }
+.tabTrigger, .accordionTrigger { border: 0; color: inherit; background: transparent; font: inherit; cursor: pointer; padding: var(--rkr-spacing-3) var(--rkr-spacing-4); }
+.tabTrigger { border-radius: var(--rkr-radius-sm) var(--rkr-radius-sm) 0 0; }
+.tabTrigger[data-state='active'] { color: var(--rkr-color-action-on-primary); background: var(--rkr-color-action-primary); }
+.tabTrigger:disabled, .accordionTrigger:disabled { opacity: .5; cursor: not-allowed; }
+.tabContent { padding-block: var(--rkr-spacing-4); }
+.tabs[data-orientation='vertical'] { display: flex; gap: var(--rkr-spacing-4); }
+.accordion { border: 1px solid var(--rkr-color-border-default); border-radius: var(--rkr-radius-md); }
+.accordionItem + .accordionItem { border-top: 1px solid var(--rkr-color-border-default); }
+.accordionHeader { margin: 0; font-size: inherit; }
+.accordionTrigger { display: flex; align-items: center; justify-content: space-between; gap: var(--rkr-spacing-3); width: 100%; text-align: start; }
+.accordionContent { padding: 0 var(--rkr-spacing-4) var(--rkr-spacing-4); line-height: var(--rkr-line-height-normal); }
+.accordionContent[hidden] { display: none; }
+.accordionTrigger[data-state='open'] .chevron { transform: rotate(180deg); }
+.tabTrigger:focus-visible, .tabContent:focus-visible, .accordionTrigger:focus-visible { outline: 2px solid var(--rkr-color-action-primary); outline-offset: 2px; }

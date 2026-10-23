@@ -12,3 +12,4 @@
   outline-offset: 3px;
 }
 .checkbox:disabled { opacity: 0.5; cursor: not-allowed; }
+.checkbox[aria-invalid='true'] { outline: 1px solid var(--rkr-color-action-danger); outline-offset: 2px; }

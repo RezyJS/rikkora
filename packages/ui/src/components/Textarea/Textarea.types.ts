@@ -1,3 +1,3 @@
 import type { ComponentPropsWithRef } from 'react';
 
-export type TextareaProps = ComponentPropsWithRef<'textarea'>;
+export type TextareaProps = ComponentPropsWithRef<'textarea'> & { invalid?: boolean };

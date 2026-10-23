@@ -12,6 +12,8 @@
   --rkr-color-text-primary: var(--rkr-palette-text);
   --rkr-color-text-secondary: var(--rkr-palette-text-muted);
   --rkr-color-text-tertiary: var(--rkr-palette-text-subtle);
+  --rkr-color-text-danger: var(--rkr-palette-danger-text);
+  --rkr-color-text-action: var(--rkr-palette-action-text);
 
   /* Interactive */
   --rkr-color-action-primary: var(--rkr-palette-accent);
@@ -25,4 +27,5 @@
 
   --rkr-color-bg-surface-hover: var(--rkr-palette-surface-hover);
   --rkr-color-border-hover: var(--rkr-palette-border-hover);
+  --rkr-color-overlay: rgb(0 0 0 / 60%);
 }

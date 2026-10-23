@@ -1,0 +1,22 @@
+.alert { box-sizing: border-box; padding: var(--rkr-spacing-4); border: 1px solid var(--rkr-color-border-default); border-radius: var(--rkr-radius-md); background: var(--rkr-color-bg-surface); color: var(--rkr-color-text-primary); font: var(--rkr-font-size-md)/var(--rkr-line-height-normal) var(--rkr-font-family); }
+.alert[data-variant='primary'] { border-inline-start: 4px solid var(--rkr-color-action-primary); }
+.alert[data-variant='danger'] { border-inline-start: 4px solid var(--rkr-color-action-danger); }
+.alertTitle { margin-bottom: var(--rkr-spacing-1); font-weight: var(--rkr-font-weight-semibold); }
+.spinner { box-sizing: border-box; display: inline-block; width: 1.25rem; height: 1.25rem; border: 2px solid currentColor; border-inline-end-color: transparent; border-radius: var(--rkr-radius-full); animation: spin .8s linear infinite; }
+.spinner[data-size='sm'] { width: 1rem; height: 1rem; }
+.spinner[data-size='lg'] { width: 2rem; height: 2rem; border-width: 3px; }
+.progress { overflow: hidden; height: var(--rkr-spacing-2); width: 100%; border-radius: var(--rkr-radius-full); background: var(--rkr-color-bg-elevated); }
+.progressIndicator { height: 100%; background: var(--rkr-color-action-primary); }
+.progress[data-state='indeterminate'] .progressIndicator { width: 40%; animation: progress 1.4s ease-in-out infinite; }
+.skeleton { min-height: 1rem; background: var(--rkr-color-bg-elevated); border-radius: var(--rkr-radius-md); }
+.skeleton[data-shape='text'] { height: 1em; min-height: 0; border-radius: var(--rkr-radius-sm); }
+.skeleton[data-shape='circle'] { aspect-ratio: 1; border-radius: var(--rkr-radius-full); }
+.skeleton[data-animated='true'] { animation: pulse 1.5s ease-in-out infinite; }
+.avatar { display: inline-flex; flex-shrink: 0; align-items: center; justify-content: center; overflow: hidden; width: 2.5rem; height: 2.5rem; border-radius: var(--rkr-radius-full); background: var(--rkr-color-bg-elevated); color: var(--rkr-color-text-primary); font: var(--rkr-font-weight-medium) var(--rkr-font-size-sm)/1 var(--rkr-font-family); }
+.avatar[data-size='sm'] { width: 2rem; height: 2rem; font-size: var(--rkr-font-size-xs); }
+.avatar[data-size='lg'] { width: 3.5rem; height: 3.5rem; font-size: var(--rkr-font-size-lg); }
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse { 50% { opacity: .4; } }
+@keyframes progress { from { transform: translateX(-100%); } to { transform: translateX(350%); } }
+@media (prefers-reduced-motion: reduce) { .spinner, .skeleton[data-animated='true'], .progress[data-state='indeterminate'] .progressIndicator { animation: none; } }

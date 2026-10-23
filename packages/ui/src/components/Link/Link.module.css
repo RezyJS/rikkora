@@ -1,0 +1,12 @@
+:where(.link) {
+  color: var(--rkr-color-text-action);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+:where(.link:hover) { color: var(--rkr-color-action-primary-hover); }
+:where(.link:focus-visible) {
+  outline: 2px solid var(--rkr-color-action-primary);
+  outline-offset: 3px;
+  border-radius: var(--rkr-radius-sm);
+}
