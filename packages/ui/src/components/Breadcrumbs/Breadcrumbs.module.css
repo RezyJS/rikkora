@@ -1,0 +1,4 @@
+.root { display: flex; align-items: center; gap: var(--rkr-spacing-2); min-width: 0; }
+.list { display: flex; align-items: center; flex-wrap: wrap; gap: inherit; min-width: 0; margin: 0; padding: 0; list-style: none; }
+.item { display: inline-flex; align-items: center; gap: inherit; min-width: 0; overflow-wrap: anywhere; }
+.separator { flex-shrink: 0; user-select: none; }

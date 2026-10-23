@@ -3,7 +3,7 @@ import { IconCheck, IconMinus } from '@tabler/icons-react';
 import { cn } from '../../lib/cn';
 import type { CheckboxProps } from './Checkbox.types';
 import styles from './Checkbox.module.css';
-import { useFieldControl } from '../Field/Field';
+import { useFieldControl } from '../Field/fieldControl';
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ className, invalid, ...rest }, ref) => {

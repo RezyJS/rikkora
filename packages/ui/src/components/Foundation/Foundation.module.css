@@ -15,6 +15,7 @@
 .separator { flex-shrink: 0; background: var(--rkr-color-border-default); height: 1px; width: 100%; }
 .separator[data-orientation='vertical'] { width: 1px; height: auto; align-self: stretch; min-height: 1em; }
 .badge { display: inline-flex; align-items: center; padding: var(--rkr-spacing-1) var(--rkr-spacing-2); border-radius: var(--rkr-radius-full); font: var(--rkr-font-weight-medium) var(--rkr-font-size-xs)/var(--rkr-line-height-normal) var(--rkr-font-family); background: var(--rkr-color-bg-elevated); color: var(--rkr-color-text-primary); }
+.badgeLabel { transform: translateY(-0.1em); }
 .badge[data-variant='primary'] { background: var(--rkr-color-action-primary); color: var(--rkr-color-action-on-primary); }
 .badge[data-variant='danger'] { background: var(--rkr-color-action-danger); color: var(--rkr-color-action-on-danger); }
 .card { box-sizing: border-box; min-width: 0; color: var(--rkr-color-text-primary); border: 1px solid var(--rkr-color-border-default); border-radius: var(--rkr-radius-lg); }

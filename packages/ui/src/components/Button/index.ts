@@ -1,2 +1,3 @@
 export { default as Button } from './Button';
-export { default as IconButton } from './IconButton';
+export { ButtonLink } from './ButtonLink';
+export type { ButtonLinkProps } from './ButtonLink';

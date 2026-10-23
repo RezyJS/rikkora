@@ -1,0 +1,46 @@
+import { forwardRef, type ComponentPropsWithoutRef } from 'react';
+import * as Primitive from '@radix-ui/react-dialog';
+import { IconX } from '@tabler/icons-react';
+import { cn } from '../../lib/cn';
+import { OverlayScope, PortalAppearance } from './PortalAppearance';
+import styles from './Overlays.module.css';
+
+export type DialogProps = ComponentPropsWithoutRef<typeof Primitive.Root>;
+export interface DialogContentProps extends ComponentPropsWithoutRef<typeof Primitive.Content> {
+  container?: HTMLElement | null;
+  overlayClassName?: string;
+}
+export type DialogTriggerProps = ComponentPropsWithoutRef<typeof Primitive.Trigger>;
+export type DialogTitleProps = ComponentPropsWithoutRef<typeof Primitive.Title>;
+export type DialogDescriptionProps = ComponentPropsWithoutRef<typeof Primitive.Description>;
+export type DialogCloseProps = ComponentPropsWithoutRef<typeof Primitive.Close>;
+
+function Root(props: DialogProps) {
+  return <OverlayScope><Primitive.Root {...props} /></OverlayScope>;
+}
+const Content = forwardRef<HTMLDivElement, DialogContentProps>(function DialogContent(
+  { container, overlayClassName, className, children, forceMount, ...props }, ref,
+) {
+  return <Primitive.Portal container={container} forceMount={forceMount}><PortalAppearance>
+    <Primitive.Overlay className={cn(styles.overlay, overlayClassName)} />
+    <Primitive.Content {...props} ref={ref} className={cn(styles.dialog, className)}>{children}</Primitive.Content>
+  </PortalAppearance></Primitive.Portal>;
+});
+const Title = forwardRef<HTMLHeadingElement, DialogTitleProps>(function DialogTitle({ className, ...props }, ref) {
+  return <Primitive.Title {...props} ref={ref} className={cn(styles.title, className)} />;
+});
+const Description = forwardRef<HTMLParagraphElement, DialogDescriptionProps>(function DialogDescription({ className, ...props }, ref) {
+  return <Primitive.Description {...props} ref={ref} className={cn(styles.description, className)} />;
+});
+const Close = forwardRef<HTMLButtonElement, DialogCloseProps>(function DialogClose({ children, asChild, className, ...props }, ref) {
+  const iconOnly = children === undefined && !asChild;
+  return <Primitive.Close {...props} ref={ref} asChild={asChild}
+    aria-label={props['aria-label'] ?? (iconOnly ? 'Close' : undefined)}
+    className={cn(iconOnly && styles.close, className)}>
+    {iconOnly ? <IconX size='var(--rkr-spacing-4)' stroke={2} aria-hidden='true' focusable='false' /> : children}
+  </Primitive.Close>;
+});
+
+/** Include Title, Description (or aria-describedby={undefined}), and an accessible Close control. */
+export const Dialog = { Root, Trigger: Primitive.Trigger, Content, Title, Description, Close };
+

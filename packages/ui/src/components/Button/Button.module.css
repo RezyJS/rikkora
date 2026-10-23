@@ -16,6 +16,7 @@
   font-weight: var(--rkr-font-weight-medium);
   line-height: var(--rkr-line-height-tight);
 
+  text-decoration: none;
   white-space: nowrap;
   vertical-align: middle;
 
@@ -39,25 +40,44 @@
    Sizes
 ---------------------------------------- */
 
-.sm {
+.xs,
+.icon-xs {
+  --rkr-button-height: var(--rkr-spacing-6);
+  --rkr-button-padding-x: var(--rkr-spacing-2);
+  --rkr-button-gap: var(--rkr-spacing-1);
+  --rkr-button-font-size: var(--rkr-font-size-xs);
+}
+
+.sm,
+.icon-sm {
   --rkr-button-height: var(--rkr-spacing-8);
   --rkr-button-padding-x: var(--rkr-spacing-3);
   --rkr-button-gap: var(--rkr-spacing-1-5);
   --rkr-button-font-size: var(--rkr-font-size-xs);
 }
 
-.md {
+.md,
+.icon {
   --rkr-button-height: var(--rkr-spacing-10);
   --rkr-button-padding-x: var(--rkr-spacing-4);
   --rkr-button-gap: var(--rkr-spacing-2);
   --rkr-button-font-size: var(--rkr-font-size-sm);
 }
 
-.lg {
+.lg,
+.icon-lg {
   --rkr-button-height: var(--rkr-spacing-12);
   --rkr-button-padding-x: var(--rkr-spacing-5);
   --rkr-button-gap: var(--rkr-spacing-2-5);
   --rkr-button-font-size: var(--rkr-font-size-md);
+}
+
+.xl,
+.icon-xl {
+  --rkr-button-height: var(--rkr-spacing-14);
+  --rkr-button-padding-x: var(--rkr-spacing-6);
+  --rkr-button-gap: var(--rkr-spacing-3);
+  --rkr-button-font-size: var(--rkr-font-size-lg);
 }
 
 /* ----------------------------------------
@@ -85,10 +105,10 @@
 .outline {
   --rkr-button-bg: transparent;
   --rkr-button-color: var(--rkr-color-text-primary);
-  --rkr-button-border: var(--rkr-color-border-default);
+  --rkr-button-border: var(--rkr-color-action-primary);
 
-  --rkr-button-bg-hover: var(--rkr-color-bg-elevated);
-  --rkr-button-border-hover: var(--rkr-color-text-tertiary);
+  --rkr-button-bg-hover: var(--rkr-color-action-primary-hover);
+  --rkr-button-border-hover: var(--rkr-color-action-primary-hover);
 }
 
 .ghost {
@@ -144,6 +164,11 @@
   gap: var(--rkr-button-gap);
 }
 
+/* Onest ink sits below the centre of its line box. Adjust labels only. */
+.label {
+  transform: translateY(-0.1em);
+}
+
 .contentHidden {
   opacity: 0;
 }
@@ -186,19 +211,48 @@
    Icon Button
 ---------------------------------------- */
 
-.iconButton {
+.icon,
+.icon-xs,
+.icon-sm,
+.icon-lg,
+.icon-xl {
   width: var(--rkr-button-height);
   min-width: var(--rkr-button-height);
   padding: 0;
 }
 
-.iconButton > .content {
+:is(.icon, .icon-xs, .icon-sm, .icon-lg, .icon-xl) > .content {
   width: 100%;
   height: 100%;
 }
 
-.iconButton > .content > svg {
+:is(.icon, .icon-xs, .icon-sm, .icon-lg, .icon-xl) > .content > svg {
   width: 1.25em;
   height: 1.25em;
   flex-shrink: 0;
+}
+
+.button[data-radius='none'] {
+  border-radius: var(--rkr-radius-none);
+}
+.button[data-radius='xs'] {
+  border-radius: var(--rkr-radius-xs);
+}
+.button[data-radius='sm'] {
+  border-radius: var(--rkr-radius-sm);
+}
+.button[data-radius='md'] {
+  border-radius: var(--rkr-radius-md);
+}
+.button[data-radius='lg'] {
+  border-radius: var(--rkr-radius-lg);
+}
+.button[data-radius='xl'] {
+  border-radius: var(--rkr-radius-xl);
+}
+.button[data-radius='2xl'] {
+  border-radius: var(--rkr-radius-2xl);
+}
+.button[data-radius='full'] {
+  border-radius: var(--rkr-radius-full);
 }

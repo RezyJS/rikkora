@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import { cn } from '../../lib/cn';
 import type { InputProps } from './Input.types';
 import styles from './Input.module.css';
-import { useFieldControl } from '../Field/Field';
+import { useFieldControl } from '../Field/fieldControl';
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, type = 'text', invalid, ...rest }, ref) => {

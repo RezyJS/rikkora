@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import { cn } from '../../lib/cn';
 import type { TextareaProps } from './Textarea.types';
 import styles from './Textarea.module.css';
-import { useFieldControl } from '../Field/Field';
+import { useFieldControl } from '../Field/fieldControl';
 
 const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, rows = 4, invalid, ...rest }, ref) => {

@@ -10,12 +10,13 @@ export type { CheckboxProps } from './components/Checkbox';
 
 import './styles/index.css';
 
-export { Button, IconButton } from './components/Button';
+export { Button, ButtonLink } from './components/Button';
+export type { ButtonLinkProps } from './components/Button';
 
 export type {
   ButtonProps,
-  IconButtonProps,
   ButtonSize,
+  ButtonRadius,
   ButtonVariant,
 } from './components/Button/Button.types';
 
@@ -65,3 +66,6 @@ export { Table, Pagination } from './components/Data/Data';
 export type { TableProps, TableHeadProps, TableBodyProps, TableFootProps, TableRowProps, TableHeaderProps, TableCellProps, TableCaptionProps, PaginationProps } from './components/Data/Data';
 export { ScrollArea } from './components/ScrollArea';
 export type { ScrollAreaProps, ScrollAreaOrientation, ScrollAreaViewportProps, ScrollAreaCSSProperties } from './components/ScrollArea';
+
+export { Breadcrumbs } from './components/Breadcrumbs';
+export type { BreadcrumbsProps } from './components/Breadcrumbs';
