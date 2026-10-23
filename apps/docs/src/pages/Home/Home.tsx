@@ -1,3 +1,4 @@
+import { Box } from '@rikkora/ui';
 import { Hero } from '../../components/Hero/Hero';
 import { SiteHeader } from '../../components/SiteHeader/SiteHeader';
 import { Showcase } from '../../components/Showcase/Showcase';
@@ -6,14 +7,14 @@ import styles from './Home.module.css';
 
 export function Home() {
   return (
-    <div className={styles.page}>
+    <Box className={styles.page}>
       <SiteHeader />
 
-      <main>
+      <Box as='main'>
         <Hero />
 
         <Showcase />
-      </main>
-    </div>
+      </Box>
+    </Box>
   );
 }

@@ -1,3 +1,4 @@
+import { Button, Box } from '@rikkora/ui';
 import styles from './ScrollIndicator.module.css';
 import { usePreferences } from '../../preferences/PreferencesContext';
 
@@ -11,18 +12,18 @@ export function ScrollIndicator() {
   };
 
   return (
-    <button
+    <Button variant='ghost'
       type='button'
       className={styles.indicator}
       onClick={scrollToNextSection}
       aria-label={t.scrollTo}
     >
-      <span
+      <Box as='span'
         className={styles.line}
         aria-hidden='true'
       />
 
-      <span className={styles.label}>{t.scroll}</span>
+      <Box as='span' className={styles.label}>{t.scroll}</Box>
 
       <svg
         width='16'
@@ -39,6 +40,6 @@ export function ScrollIndicator() {
           strokeLinejoin='round'
         />
       </svg>
-    </button>
+    </Button>
   );
 }

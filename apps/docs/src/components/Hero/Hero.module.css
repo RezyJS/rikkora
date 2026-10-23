@@ -41,7 +41,7 @@
   letter-spacing: 0.14em;
 }
 
-.title {
+.title.title {
   margin: 0;
 
   color: var(--rkr-color-text-primary);
@@ -56,7 +56,8 @@
   color: var(--rkr-color-action-primary);
 }
 
-.description {
+.description.description {
+  margin-block: 1em;
   max-width: 440px;
 
   color: var(--rkr-color-text-secondary);
@@ -154,11 +155,11 @@
     letter-spacing: 0.1em;
   }
 
-  .title {
+  .title.title {
     font-size: clamp(64px, 8vw, 88px);
   }
 
-  .description {
+  .description.description {
     font-size: var(--rkr-font-size-lg);
     line-height: 1.6;
   }
@@ -211,11 +212,11 @@
     margin-bottom: var(--rkr-spacing-4);
   }
 
-  .title {
+  .title.title {
     font-size: clamp(56px, 12vw, 88px);
   }
 
-  .description {
+  .description.description {
     max-width: 32ch;
     margin-block: var(--rkr-spacing-5) var(--rkr-spacing-6);
     font-size: var(--rkr-font-size-md);

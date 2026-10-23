@@ -1,4 +1,4 @@
-import { Flex, IconButton } from '@rikkora/ui';
+import { Flex, IconButton, Box } from '@rikkora/ui';
 import { usePreferences } from '../../preferences/PreferencesContext';
 import styles from './PreferencesControls.module.css';
 
@@ -27,7 +27,7 @@ export function PreferencesControls() {
       <IconButton variant='ghost' size='sm' className={styles.control}
         aria-label={languageLabel} title={languageLabel}
         onClick={() => setLanguage(language === 'en' ? 'ru' : 'en')}>
-        <span aria-hidden='true'>{language === 'en' ? 'En' : 'Ru'}</span>
+        <Box as='span' aria-hidden='true'>{language === 'en' ? 'En' : 'Ru'}</Box>
       </IconButton>
     </Flex>
   );

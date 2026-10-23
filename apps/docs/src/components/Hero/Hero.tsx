@@ -1,4 +1,5 @@
-import { Link } from 'react-router';
+import { Box, Heading, Text, Link } from '@rikkora/ui';
+import { Link as RouterLink } from 'react-router';
 import { ScrollIndicator } from '../ScrollIndicator/ScrollIndicator';
 
 import rikka from '../../assets/rikka.webp';
@@ -8,45 +9,45 @@ import { usePreferences } from '../../preferences/PreferencesContext';
 export function Hero() {
   const { t } = usePreferences();
   return (
-    <section
+    <Box as='section'
       className={styles.hero}
       aria-labelledby='hero-title'
     >
-      <div className={styles.container}>
-        <div className={styles.content}>
-          <span className={styles.eyebrow}>{t.eyebrow}</span>
+      <Box className={styles.container}>
+        <Box className={styles.content}>
+          <Box as='span' className={styles.eyebrow}>{t.eyebrow}</Box>
 
-          <h1
+          <Heading level={1}
             id='hero-title'
             className={styles.title}
           >
-            rikkora<span>.</span>
-          </h1>
+            rikkora<Box as='span'>.</Box>
+          </Heading>
 
-          <p className={styles.description}>
-            {t.heroBefore}<span>{t.heroName}</span>{t.heroAfter}
-          </p>
+          <Text as='p' className={styles.description}>
+            {t.heroBefore}<Box as='span'>{t.heroName}</Box>{t.heroAfter}
+          </Text>
 
-          <Link
+          <Link as={RouterLink}
             to='/docs/components'
             className={styles.cta}
           >
             {t.explore}
-            <span aria-hidden='true'>↗</span>
+            <Box as='span' aria-hidden='true'>↗</Box>
           </Link>
-        </div>
-      </div>
+        </Box>
+      </Box>
 
-      <div className={styles.artwork}>
-        <img
+      <Box className={styles.artwork}>
+        <Box as='img'
           src={rikka}
           alt={t.mascot}
           className={styles.rikka}
           fetchPriority='high'
         />
-      </div>
+      </Box>
 
       <ScrollIndicator />
-    </section>
+    </Box>
   );
 }

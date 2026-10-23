@@ -1,4 +1,4 @@
-.indicator {
+.indicator.indicator {
   position: absolute;
   right: 32px;
   bottom: 22px;
@@ -19,7 +19,9 @@
   transition: color var(--rkr-duration-normal) var(--rkr-ease-standard);
 }
 
-.indicator:hover {
+.indicator.indicator:hover:not(:disabled) {
+  background: transparent;
+  border-color: transparent;
   color: var(--rkr-color-action-primary);
 }
 
@@ -28,6 +30,8 @@
   outline-offset: 8px;
   border-radius: var(--rkr-radius-sm);
 }
+
+.indicator > span { display: flex; flex-direction: column; align-items: center; gap: var(--rkr-spacing-3); }
 
 .line {
   display: block;
@@ -44,7 +48,7 @@
 }
 
 @media (max-width: 640px) {
-  .indicator {
+  .indicator.indicator {
     right: 16px;
     bottom: 16px;
   }
@@ -55,7 +59,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .indicator {
+  .indicator.indicator {
     transition: none;
   }
 }
