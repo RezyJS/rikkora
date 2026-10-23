@@ -1,73 +1,64 @@
 <p align="center">
-  <img src=".github/assets/readme-cover.svg" alt="Rikkora UI — библиотека React-компонентов с Риккой" width="100%" />
+  <img src=".github/assets/readme-cover.svg" alt="Rikkora UI с Риккой" width="100%" />
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/version-0.1.0-5B5FD3?style=flat-square" alt="Версия 0.1.0" />
   <img src="https://img.shields.io/badge/React-18%20%2F%2019-191922?style=flat-square&amp;logo=react&amp;logoColor=white" alt="React 18 и 19" />
-  <img src="https://img.shields.io/badge/TypeScript-typed-191922?style=flat-square&amp;logo=typescript&amp;logoColor=white" alt="Написано на TypeScript" />
+  <img src="https://img.shields.io/badge/TypeScript-typed-191922?style=flat-square&amp;logo=typescript&amp;logoColor=white" alt="TypeScript" />
 </p>
 
-<p align="center">
-  <a href="#компоненты">Компоненты</a> · <a href="#использование">Использование</a> · <a href="#установка">Установка</a> · <a href="README.md">English</a>
-</p>
+# Rikkora UI
 
-Rikkora UI — библиотека React-компонентов на TypeScript с CSS Modules. В Playground можно посмотреть API компонентов, а по ссылкам ниже — как они устроены внутри.
+React-компоненты для интерфейсов приложений: формы, компоновка страниц, навигация и уведомления. Библиотека поддерживает светлую и тёмную темы; оформление настраивается через CSS-переменные.
 
-## Компоненты
+[English](README.md) · [Обратная связь](https://github.com/RezyJS/rikkora/issues)
 
-| Компонент | Возможности |
-| --- | --- |
-| [Button](packages/ui/src/components/Button/Button.tsx) | Пять вариантов, размеры xs–xl для текста и иконок, скругление, загрузка и недоступность |
-| [ButtonLink](packages/ui/src/components/Button/ButtonLink.tsx) | Оформление кнопки для обычных ссылок и роутера |
-| [Breadcrumbs](packages/ui/src/components/Breadcrumbs/Breadcrumbs.tsx) | Навигационный путь со ссылками на родительские разделы |
-| [Input](packages/ui/src/components/Input/Input.tsx) | Нативные атрибуты, управляемое и неуправляемое значение, ref |
-| [Checkbox](packages/ui/src/components/Checkbox/Checkbox.tsx) | Нативный чекбокс с управляемым и неуправляемым состоянием |
-| [Textarea](packages/ui/src/components/Textarea/Textarea.tsx) | Нативное многострочное поле с изменением размера по обеим осям |
-| [Flex](packages/ui/src/components/Flex/Flex.tsx) | Flex-раскладка с выравниванием, переносом и токенами отступов |
-| [Grid](packages/ui/src/components/Grid/Grid.tsx) | Grid-раскладка с настройкой строк, столбцов, выравнивания и промежутков |
+## Статус
 
-## Установка
+Библиотека в разработке. Пакет `@rikkora/ui` пока не опубликован в npm.
 
-Установка пока недоступна: пакет ещё не опубликован в npm.
+Поддерживаются React 18 и 19. Типы TypeScript входят в пакет.
 
 ## Использование
 
 Подключите стили один раз в точке входа приложения:
 
 ```tsx
-// main.tsx
 import '@rikkora/ui/styles.css';
 ```
 
-Затем импортируйте компоненты там, где они нужны:
+Импортируйте нужные компоненты из `@rikkora/ui`:
 
 ```tsx
-import { Button, Flex, Input } from '@rikkora/ui';
+import { Button } from '@rikkora/ui';
 
-export function Example() {
-  return (
-    <Flex direction='column' gap={4}>
-      <label>
-        Имя
-        <Input name='name' placeholder='Введите имя' />
-      </label>
-      <Button variant='primary'>Продолжить</Button>
-    </Flex>
-  );
+export function SaveButton() {
+  return <Button variant="primary">Сохранить</Button>;
 }
 ```
 
-## Светлая и тёмная темы
+## Темы и оформление
 
-По умолчанию используется светлая тема.
-
-Для явного выбора задайте `data-rkr-theme` на корне страницы или контейнере. `violet-smoke-light` — светлая тема, `violet-smoke` — тёмная:
-
-```html
-<html data-rkr-theme="violet-smoke-light">
-```
+По умолчанию используется светлая тема. Для тёмной задайте `data-rkr-theme="violet-smoke"` на корне страницы или контейнере:
 
 ```html
 <html data-rkr-theme="violet-smoke">
 ```
+
+Для явного выбора светлой темы используйте `violet-smoke-light`.
+
+Цвета, шрифты, отступы и скругления можно переопределить в своих стилях. Например, изменить основной цвет тёмной темы:
+
+```css
+[data-rkr-theme="violet-smoke"] {
+  --rkr-color-action-primary: #8b5cf6;
+  --rkr-color-action-primary-hover: #7c3aed;
+}
+```
+
+Подключайте свои стили после `@rikkora/ui/styles.css`.
+
+## Обратная связь
+
+Об ошибках и предложениях можно написать в [GitHub Issues](https://github.com/RezyJS/rikkora/issues). Приложите небольшой пример, если сообщаете об ошибке.
