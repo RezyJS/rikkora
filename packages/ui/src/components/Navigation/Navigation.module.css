@@ -14,4 +14,5 @@
 .accordionContent { padding: 0 var(--rkr-spacing-4) var(--rkr-spacing-4); line-height: var(--rkr-line-height-normal); }
 .accordionContent[hidden] { display: none; }
 .accordionTrigger[data-state='open'] .chevron { transform: rotate(180deg); }
+.chevron { flex-shrink: 0; }
 .tabTrigger:focus-visible, .tabContent:focus-visible, .accordionTrigger:focus-visible { outline: 2px solid var(--rkr-color-action-primary); outline-offset: 2px; }

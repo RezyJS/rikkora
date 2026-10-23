@@ -1,4 +1,5 @@
 import { forwardRef, useId, type ComponentPropsWithoutRef, type ReactNode } from 'react';
+import { IconChevronDown } from '@tabler/icons-react';
 import { cn } from '../../lib/cn';
 import { useFieldControl } from '../Field/Field';
 import styles from './Controls.module.css';
@@ -20,7 +21,11 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
   { className, invalid, ...props }, ref,
 ) {
   const field = useFieldControl({ ...props, invalid });
-  return <select {...props} {...field} ref={ref} className={cn(styles.select, className)} />;
+  const hasIndicator = !props.multiple && !(Number(props.size) > 1);
+  return <span className={styles.selectControl}>
+    <select {...props} {...field} ref={ref} data-indicator={hasIndicator || undefined} className={cn(styles.select, className)} />
+    {hasIndicator && <IconChevronDown className={styles.selectIndicator} size='var(--rkr-spacing-4)' stroke={2} aria-hidden='true' focusable='false' />}
+  </span>;
 });
 
 export interface SliderProps extends Omit<ComponentPropsWithoutRef<'input'>, 'type' | 'size'> { invalid?: boolean }

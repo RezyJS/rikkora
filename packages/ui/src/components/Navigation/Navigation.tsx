@@ -1,4 +1,5 @@
 import { forwardRef, type ComponentPropsWithoutRef } from 'react';
+import { IconChevronDown } from '@tabler/icons-react';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { cn } from '../../lib/cn';
@@ -38,7 +39,7 @@ const AccordionHeader = forwardRef<HTMLHeadingElement, AccordionHeaderProps>(fun
 });
 const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(function AccordionTrigger({ className, children, ...props }, ref) {
   return <AccordionPrimitive.Trigger {...props} ref={ref} className={cn(styles.accordionTrigger, className)}>
-    {children}<span aria-hidden='true' className={styles.chevron}>⌄</span>
+    {children}<IconChevronDown className={styles.chevron} size='var(--rkr-spacing-4)' stroke={2} aria-hidden='true' focusable='false' />
   </AccordionPrimitive.Trigger>;
 });
 const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(function AccordionContent({ className, ...props }, ref) {

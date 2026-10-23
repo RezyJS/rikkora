@@ -1,5 +1,6 @@
 import { forwardRef, type ComponentPropsWithoutRef } from 'react';
 import * as Primitive from '@radix-ui/react-dialog';
+import { IconX } from '@tabler/icons-react';
 import { cn } from '../../lib/cn';
 import { OverlayScope, PortalAppearance } from './PortalAppearance';
 import styles from './Overlays.module.css';
@@ -31,9 +32,17 @@ const Title = forwardRef<HTMLHeadingElement, DialogTitleProps>(function DialogTi
 const Description = forwardRef<HTMLParagraphElement, DialogDescriptionProps>(function DialogDescription({ className, ...props }, ref) {
   return <Primitive.Description {...props} ref={ref} className={cn(styles.description, className)} />;
 });
+const Close = forwardRef<HTMLButtonElement, DialogCloseProps>(function DialogClose({ children, asChild, className, ...props }, ref) {
+  const iconOnly = children === undefined && !asChild;
+  return <Primitive.Close {...props} ref={ref} asChild={asChild}
+    aria-label={props['aria-label'] ?? (iconOnly ? 'Close' : undefined)}
+    className={cn(iconOnly && styles.close, className)}>
+    {iconOnly ? <IconX size='var(--rkr-spacing-4)' stroke={2} aria-hidden='true' focusable='false' /> : children}
+  </Primitive.Close>;
+});
 
 /** Include Title, Description (or aria-describedby={undefined}), and an accessible Close control. */
-export const Dialog = { Root, Trigger: Primitive.Trigger, Content, Title, Description, Close: Primitive.Close };
+export const Dialog = { Root, Trigger: Primitive.Trigger, Content, Title, Description, Close };
 
 export type DrawerProps = DialogProps;
 export interface DrawerContentProps extends DialogContentProps { side?: 'left' | 'right' | 'top' | 'bottom' }

@@ -3,4 +3,6 @@
 .table th { font-weight: var(--rkr-font-weight-semibold); }
 .table caption { padding-block: var(--rkr-spacing-3); text-align: start; color: var(--rkr-color-text-secondary); }
 .pagination, .pageItem { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--rkr-spacing-1); }
-.ellipsis { padding-inline: var(--rkr-spacing-2); color: var(--rkr-color-text-secondary); }
+.ellipsis { display: inline-flex; align-items: center; padding-inline: var(--rkr-spacing-2); color: var(--rkr-color-text-secondary); }
+.directionIcon { flex-shrink: 0; }
+.pagination:dir(rtl) .directionIcon { transform: rotate(180deg); }

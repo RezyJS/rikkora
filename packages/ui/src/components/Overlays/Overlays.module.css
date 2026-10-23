@@ -3,6 +3,10 @@
 .dialog { position: fixed; z-index: calc(1001 + var(--rkr-overlay-layer, 1) * 10); top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(32rem, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); overflow: auto; padding: var(--rkr-spacing-6); }
 .title { margin: 0 0 var(--rkr-spacing-3); font-size: var(--rkr-font-size-xl); font-weight: var(--rkr-font-weight-semibold); }
 .description { margin: 0 0 var(--rkr-spacing-4); color: var(--rkr-color-text-secondary); }
+.close { display: inline-flex; align-items: center; justify-content: center; width: var(--rkr-spacing-8); height: var(--rkr-spacing-8); padding: 0; border: 0; border-radius: var(--rkr-radius-sm); background: transparent; color: inherit; cursor: pointer; }
+.close:hover:not(:disabled) { background: var(--rkr-color-bg-surface-hover); }
+.close:disabled { opacity: .5; cursor: not-allowed; }
+.close:focus-visible { outline: 2px solid var(--rkr-color-action-primary); outline-offset: 2px; }
 .popover { z-index: calc(1002 + var(--rkr-overlay-layer, 1) * 10); padding: var(--rkr-spacing-4); width: min(20rem, calc(100vw - 2rem)); max-height: var(--radix-popover-content-available-height); overflow: auto; }
 .tooltip { z-index: calc(1003 + var(--rkr-overlay-layer, 1) * 10); padding: var(--rkr-spacing-2) var(--rkr-spacing-3); max-width: min(24rem, calc(100vw - 2rem)); font-size: var(--rkr-font-size-sm); overflow-wrap: anywhere; }
 .menu { z-index: calc(1002 + var(--rkr-overlay-layer, 1) * 10); min-width: 10rem; max-width: calc(100vw - 2rem); max-height: var(--radix-dropdown-menu-content-available-height); overflow: auto; padding: var(--rkr-spacing-1); }

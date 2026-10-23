@@ -19,7 +19,7 @@ export default defineConfig({
     },
 
     rollupOptions: {
-      external: (id) => /^(react|react-dom)(\/|$)/.test(id) || id.startsWith('@radix-ui/'),
+      external: (id) => /^(react|react-dom)(\/|$)/.test(id) || id.startsWith('@radix-ui/') || id === '@tabler/icons-react' || id.startsWith('@tabler/icons-react/'),
     },
   },
 });

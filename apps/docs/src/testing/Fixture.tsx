@@ -11,6 +11,7 @@ import { CatalogFixture } from './CatalogFixture';
 import { PreferencesProvider } from '../preferences/PreferencesProvider';
 import { BrowserRouter } from 'react-router';
 import { ToastFixture } from './ToastFixture';
+import { IconsFixture } from './IconsFixture';
 
 const inputRef = createRef<HTMLInputElement>();
 const textareaRef = createRef<HTMLTextAreaElement>();
@@ -103,4 +104,5 @@ export function Fixture() {
 
 createRoot(document.getElementById('root')!).render(new URLSearchParams(location.search).has('catalog')
   ? <BrowserRouter><PreferencesProvider><CatalogFixture /></PreferencesProvider></BrowserRouter>
-  : new URLSearchParams(location.search).has('toasts') ? <ToastFixture /> : <Fixture />);
+  : new URLSearchParams(location.search).has('toasts') ? <ToastFixture />
+  : new URLSearchParams(location.search).has('icons') ? <IconsFixture /> : <Fixture />);

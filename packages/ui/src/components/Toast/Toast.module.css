@@ -12,7 +12,7 @@
 .viewport .toast[data-swipe='cancel'] { translate: 0 0; transition: translate var(--rkr-duration-normal) var(--rkr-ease-standard); }
 .title { font-weight: var(--rkr-font-weight-semibold); }
 .description { margin-top: var(--rkr-spacing-1); color: var(--rkr-color-text-secondary); }
-.close { position: absolute; top: var(--rkr-spacing-2); inset-inline-end: var(--rkr-spacing-2); border: 0; border-radius: var(--rkr-radius-sm); width: 1.75rem; height: 1.75rem; background: transparent; color: inherit; font-size: var(--rkr-font-size-xl); cursor: pointer; }
+.close { position: absolute; top: var(--rkr-spacing-2); inset-inline-end: var(--rkr-spacing-2); display: inline-flex; align-items: center; justify-content: center; padding: 0; border: 0; border-radius: var(--rkr-radius-sm); width: 1.75rem; height: 1.75rem; background: transparent; color: inherit; cursor: pointer; }
 .close:hover { background: var(--rkr-color-bg-surface-hover); }
 .close:focus-visible { outline: 2px solid var(--rkr-color-action-primary); outline-offset: 2px; }
 .toast:focus-visible, .viewport:focus-visible { outline: 2px solid var(--rkr-color-action-primary); outline-offset: 4px; }

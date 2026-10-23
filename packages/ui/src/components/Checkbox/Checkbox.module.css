@@ -1,11 +1,22 @@
+.control { position: relative; display: inline-grid; width: fit-content; height: fit-content; flex-shrink: 0; vertical-align: middle; line-height: 0; }
 .checkbox {
+  appearance: none;
+  box-sizing: border-box;
   width: var(--rkr-spacing-4);
   height: var(--rkr-spacing-4);
   margin: 0;
   flex-shrink: 0;
-  accent-color: var(--rkr-color-action-primary);
+  padding: 0;
+  border: 1px solid var(--rkr-color-border-hover);
+  border-radius: var(--rkr-radius-sm);
+  background: var(--rkr-color-bg-surface);
   cursor: pointer;
 }
+.checkbox:checked, .checkbox:indeterminate { border-color: var(--rkr-color-action-primary); background: var(--rkr-color-action-primary); }
+.indicator { position: absolute; inset: 2px; width: calc(100% - 4px); height: calc(100% - 4px); color: var(--rkr-color-action-on-primary); pointer-events: none; opacity: 0; }
+.checkbox:checked:not(:indeterminate) ~ .check, .checkbox:indeterminate ~ .mixed { opacity: 1; }
+.checkbox:disabled ~ .indicator { opacity: 0; }
+.checkbox:disabled:checked:not(:indeterminate) ~ .check, .checkbox:disabled:indeterminate ~ .mixed { opacity: .5; }
 
 .checkbox:focus-visible {
   outline: 2px solid var(--rkr-color-action-primary);
@@ -13,3 +24,7 @@
 }
 .checkbox:disabled { opacity: 0.5; cursor: not-allowed; }
 .checkbox[aria-invalid='true'] { outline: 1px solid var(--rkr-color-action-danger); outline-offset: 2px; }
+@media (forced-colors: active) {
+  .checkbox { appearance: auto; }
+  .indicator { display: none; }
+}

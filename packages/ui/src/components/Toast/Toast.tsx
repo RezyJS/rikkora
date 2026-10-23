@@ -1,5 +1,6 @@
 import { createContext, forwardRef, useCallback, useContext, useLayoutEffect, useMemo, useRef, useState, type ComponentPropsWithoutRef, type CSSProperties, type ReactNode } from 'react';
 import * as Primitive from '@radix-ui/react-toast';
+import { IconX } from '@tabler/icons-react';
 import { Portal } from '@radix-ui/react-portal';
 import { cn } from '../../lib/cn';
 import { OverlayScope, PortalAppearance } from '../Overlays/PortalAppearance';
@@ -88,7 +89,7 @@ export function ToastProvider({ children, maxVisible = 3, closeLabel = 'Dismiss 
         <Title>{entry.title}</Title>
         {entry.description && <Description>{entry.description}</Description>}
       </div>
-      <Primitive.Close className={styles.close} aria-label={closeLabel}>×</Primitive.Close>
+      <Primitive.Close className={styles.close} aria-label={closeLabel}><IconX size='var(--rkr-spacing-4)' stroke={2} aria-hidden='true' focusable='false' /></Primitive.Close>
     </Root>)}
     <Viewport label={viewportLabel} data-stacked='' style={{ '--rkr-toast-front-height': frontHeight === undefined ? undefined : `${frontHeight}px` } as CSSProperties} />
   </Provider></ToastContext.Provider>;
