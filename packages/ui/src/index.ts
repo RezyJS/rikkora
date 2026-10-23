@@ -61,3 +61,5 @@ export { Alert, Spinner, Progress, Skeleton, Avatar } from './components/Feedbac
 export type { AlertProps, SpinnerProps, ProgressProps, SkeletonProps, AvatarProps } from './components/Feedback/Feedback';
 export { Table, Pagination } from './components/Data/Data';
 export type { TableProps, TableHeadProps, TableBodyProps, TableFootProps, TableRowProps, TableHeaderProps, TableCellProps, TableCaptionProps, PaginationProps } from './components/Data/Data';
+export { ScrollArea } from './components/ScrollArea';
+export type { ScrollAreaProps, ScrollAreaOrientation, ScrollAreaViewportProps, ScrollAreaCSSProperties } from './components/ScrollArea';
