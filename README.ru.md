@@ -18,8 +18,9 @@ Rikkora UI — библиотека React-компонентов на TypeScript
 
 | Компонент | Возможности |
 | --- | --- |
-| [Button](packages/ui/src/components/Button/Button.tsx) | Пять вариантов, три размера, состояния загрузки и недоступности |
-| [IconButton](packages/ui/src/components/Button/IconButton.tsx) | Компактная кнопка для иконки с теми же свойствами, что у Button |
+| [Button](packages/ui/src/components/Button/Button.tsx) | Пять вариантов, размеры xs–xl для текста и иконок, скругление, загрузка и недоступность |
+| [ButtonLink](packages/ui/src/components/Button/ButtonLink.tsx) | Оформление кнопки для обычных ссылок и роутера |
+| [Breadcrumbs](packages/ui/src/components/Breadcrumbs/Breadcrumbs.tsx) | Навигационный путь со ссылками на родительские разделы |
 | [Input](packages/ui/src/components/Input/Input.tsx) | Нативные атрибуты, управляемое и неуправляемое значение, ref |
 | [Checkbox](packages/ui/src/components/Checkbox/Checkbox.tsx) | Нативный чекбокс с управляемым и неуправляемым состоянием |
 | [Textarea](packages/ui/src/components/Textarea/Textarea.tsx) | Нативное многострочное поле с изменением размера по обеим осям |

@@ -18,8 +18,9 @@ Rikkora UI is a React component library built with TypeScript and CSS Modules. E
 
 | Component                                                      | What it does                                                                    |
 | -------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| [Button](packages/ui/src/components/Button/Button.tsx)         | Five variants, three sizes, loading and disabled states                         |
-| [IconButton](packages/ui/src/components/Button/IconButton.tsx) | An icon-sized button with the same props as Button                              |
+| [Button](packages/ui/src/components/Button/Button.tsx) | Five variants, xs–xl text and icon sizes, configurable radius, loading and disabled states |
+| [ButtonLink](packages/ui/src/components/Button/ButtonLink.tsx) | Button styling for native and router links |
+| [Breadcrumbs](packages/ui/src/components/Breadcrumbs/Breadcrumbs.tsx) | Navigation path with links to parent sections |
 | [Input](packages/ui/src/components/Input/Input.tsx)            | Native input attributes, controlled or uncontrolled values, and a forwarded ref |
 | [Checkbox](packages/ui/src/components/Checkbox/Checkbox.tsx)   | A native checkbox with controlled or uncontrolled state                         |
 | [Textarea](packages/ui/src/components/Textarea/Textarea.tsx)   | A native text area with resizing in both directions                             |
