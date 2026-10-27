@@ -25,6 +25,7 @@ test('three notifications overlap, hide older content and expand on hover', asyn
     x: stackBounds!.x - 12, y: stackBounds!.y - 40, width: stackBounds!.width + 24, height: stackBounds!.height + 52,
   } });
   await viewport.hover();
+  await expect(items).toHaveCount(4);
   await expect(items.first().locator('div').first()).toHaveCSS('opacity', '1');
   await expect.poll(async () => {
     const first = await items.first().boundingBox();
@@ -32,7 +33,7 @@ test('three notifications overlap, hide older content and expand on hover', asyn
     return first!.y + first!.height < second!.y;
   }).toBe(true);
   await expect(items.nth(1)).toContainText('keeps its full content');
-  expect((await items.last().boundingBox())!.height).toBeCloseTo(bounds[2].bottom - bounds[2].top, 0);
+  expect((await items.nth(2).boundingBox())!.height).toBeCloseTo(bounds[2].bottom - bounds[2].top, 0);
   await viewport.screenshot({ path: test.info().outputPath('expanded.png') });
 });
 
@@ -51,11 +52,12 @@ test('F8 expands the stack and Escape dismisses a focused notification', async (
   const viewport = page.locator('ol[data-stacked]');
   await page.keyboard.press('F8');
   await expect(viewport).toBeFocused();
+  await expect(viewport.locator('li')).toHaveCount(4);
   await expect(viewport.locator('li').first().locator('div').first()).toHaveCSS('opacity', '1');
   await viewport.locator('li').last().focus();
   await page.keyboard.press('Escape');
-  await expect(page.getByText('Notification 3', { exact: true })).toHaveCount(0);
-  await expect(page.getByText('Notification 4', { exact: true })).toBeVisible();
+  await expect(page.getByText('Notification 4', { exact: true })).toHaveCount(0);
+  await expect(page.getByText('Notification 3', { exact: true })).toBeVisible();
 });
 
 test('stack fits a narrow viewport and honors reduced motion', async ({ page }) => {
@@ -71,7 +73,7 @@ test('stack fits a narrow viewport and honors reduced motion', async ({ page }) 
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
-test('swiping a notification dismisses it', async ({ page }) => {
+test('swiping a notification keeps horizontal overflow hidden and dismisses it', async ({ page }) => {
   const viewport = page.locator('ol[data-stacked]');
   await viewport.hover();
   const newest = viewport.locator('li').last();
@@ -81,6 +83,53 @@ test('swiping a notification dismisses it', async ({ page }) => {
   await page.mouse.move(x, y);
   await page.mouse.down();
   await page.mouse.move(x + 100, y, { steps: 10 });
+  await expect(newest).toHaveAttribute('data-swipe', 'move');
+  await expect(viewport).toHaveCSS('overflow-x', 'hidden');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.mouse.up();
-  await expect(page.getByText('Notification 3', { exact: true })).toHaveCount(0);
+  await expect(page.getByText('Notification 4', { exact: true })).toHaveCount(0);
+});
+
+test('overflow count hints at queued notifications and the expanded list scrolls through all of them', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 320 });
+  await page.getByRole('button', { name: 'Enqueue four' }).click();
+  await page.mouse.move(0, 0);
+  const viewport = page.locator('ol[data-stacked]');
+  await expect(viewport).toHaveAttribute('data-overflow-count', '5');
+  await expect.poll(() => viewport.evaluate((node) => getComputedStyle(node, '::after').content)).toBe('"+5"');
+  await expect(page.getByRole('region', { name: 'Notifications (8)', exact: true })).toBeAttached();
+  await page.screenshot({ path: test.info().outputPath('overflow-collapsed.png') });
+  await viewport.hover();
+  await expect(viewport.locator('li')).toHaveCount(8);
+  await expect(viewport).toHaveCSS('overflow-y', 'auto');
+  await expect(viewport).toHaveCSS('overflow-x', 'hidden');
+  expect(await viewport.evaluate((node) => node.scrollHeight > node.clientHeight)).toBe(true);
+  await viewport.locator('li').last().scrollIntoViewIfNeeded();
+  await expect.poll(() => viewport.evaluate((node) => node.scrollTop)).toBeGreaterThan(0);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await viewport.screenshot({ path: test.info().outputPath('overflow-expanded.png') });
+  await page.mouse.move(0, 0);
+  await expect(viewport.locator('li')).toHaveCount(3);
+  await page.keyboard.press('F8');
+  await expect(viewport.locator('li')).toHaveCount(8);
+});
+
+test('expanded notifications pause expiry and queued notifications retain their display time', async ({ page }) => {
+  await page.clock.install();
+  await page.goto('/tests/fixture.html?toasts');
+  await page.getByRole('button', { name: 'Enqueue four' }).click();
+  await page.mouse.move(0, 0);
+  await page.clock.fastForward(4000);
+  const viewport = page.locator('ol[data-stacked]');
+  await viewport.hover();
+  await expect(viewport.locator('li')).toHaveCount(4);
+  await page.clock.fastForward(10000);
+  await expect(viewport.locator('li')).toHaveCount(4);
+  await page.mouse.move(0, 0);
+  await expect(viewport.locator('li')).toHaveCount(3);
+  await page.clock.fastForward(1100);
+  await expect(viewport.locator('li')).toHaveCount(1);
+  await expect(page.getByText('Notification 4', { exact: true })).toBeVisible();
+  await page.clock.fastForward(5001);
+  await expect(viewport.locator('li')).toHaveCount(0);
 });

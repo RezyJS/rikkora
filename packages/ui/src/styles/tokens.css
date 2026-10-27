@@ -13,6 +13,7 @@
   --rkr-color-text-secondary: var(--rkr-palette-text-muted);
   --rkr-color-text-tertiary: var(--rkr-palette-text-subtle);
   --rkr-color-text-danger: var(--rkr-palette-danger-text);
+  --rkr-color-text-success: var(--rkr-palette-success-text);
   --rkr-color-text-action: var(--rkr-palette-action-text);
 
   /* Interactive */
@@ -24,6 +25,9 @@
   --rkr-color-action-danger: var(--rkr-palette-danger);
   --rkr-color-action-danger-hover: var(--rkr-palette-danger-hover);
   --rkr-color-action-on-danger: var(--rkr-palette-on-danger);
+  --rkr-color-action-success: var(--rkr-palette-success);
+  --rkr-color-action-success-hover: var(--rkr-palette-success-hover);
+  --rkr-color-action-on-success: var(--rkr-palette-on-success);
 
   --rkr-color-bg-surface-hover: var(--rkr-palette-surface-hover);
   --rkr-color-border-hover: var(--rkr-palette-border-hover);

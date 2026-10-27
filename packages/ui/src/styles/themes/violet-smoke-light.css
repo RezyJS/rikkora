@@ -18,6 +18,10 @@
   --rkr-palette-danger: #b94458;
   --rkr-palette-danger-hover: #a3394c;
   --rkr-palette-on-danger: #ffffff;
+  --rkr-palette-success: #25734f;
+  --rkr-palette-success-hover: #1e6343;
+  --rkr-palette-on-success: #ffffff;
+  --rkr-palette-success-text: #1c6544;
 
   /* Interactive surfaces */
   --rkr-palette-surface-hover: #e6e6ef;

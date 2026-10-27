@@ -1,0 +1,81 @@
+import { test, expect } from '@playwright/test';
+
+test.beforeEach(async ({ page }) => { await page.goto('/tests/fixture.html?buttons'); });
+
+test('button slots, loading, native forms, asChild handlers and refs preserve their contracts', async ({ page }) => {
+  await page.getByRole('button', { name: 'Submit PDF' }).click();
+  await expect(page.getByTestId('submits')).toHaveText('1');
+  await page.getByRole('button', { name: 'Ordinary', exact: true }).click();
+  await expect(page.getByTestId('submits')).toHaveText('1');
+  const link = page.getByRole('link', { name: 'Child link' });
+  await expect(link).not.toHaveAttribute('type');
+  await link.click();
+  await expect(page.getByTestId('clicks')).toHaveText('3');
+  await expect(page).toHaveURL(/#target$/);
+  const disabled = page.getByRole('link', { name: 'Disabled child' });
+  await expect(disabled).toHaveAttribute('aria-disabled', 'true');
+  await disabled.dispatchEvent('click');
+  await expect(page).toHaveURL(/#target$/);
+  await expect(page.getByTestId('clicks')).toHaveText('3');
+  await page.getByRole('button', { name: 'Check refs' }).click();
+  await expect(page.getByRole('button', { name: 'Submit PDF' })).toBeFocused();
+  await expect(page.getByRole('status')).toHaveText('A');
+  await expect(page.getByRole('button', { name: 'Saving…' })).toBeDisabled();
+  await expect(page.getByRole('button', { name: 'Static loading' }).locator('[class*="spinner"]')).toHaveCSS('animation-name', 'none');
+  const fullWidth = page.getByRole('button', { name: 'Full width' });
+  expect(await fullWidth.evaluate(node => Math.abs(node.getBoundingClientRect().width - node.parentElement!.clientWidth))).toBeLessThan(1);
+});
+
+test('toggle, split menu and confirmation support keyboard use and retry after asynchronous failure', async ({ page }) => {
+  const bold = page.getByRole('button', { name: 'Bold', exact: true });
+  await bold.focus(); await page.keyboard.press('Space');
+  await expect(bold).toHaveAttribute('aria-pressed', 'true');
+  await page.keyboard.press('Enter');
+  await expect(bold).toHaveAttribute('aria-pressed', 'false');
+  await page.getByRole('button', { name: 'Save options' }).focus();
+  await page.keyboard.press('ArrowDown');
+  await expect(page.getByRole('menuitem', { name: 'Save as…' })).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page.getByRole('status')).toHaveText('Save as');
+  await page.getByRole('button', { name: 'Confirm retry' }).click();
+  const dialog = page.getByRole('alertdialog', { name: 'Confirm deletion?' });
+  await expect(dialog.getByRole('button', { name: 'Cancel' })).toBeFocused();
+  await expect(dialog).toHaveAccessibleDescription('Example only.');
+  await dialog.getByRole('button', { name: 'Delete', exact: true }).click();
+  await expect(dialog.getByRole('alert')).toBeVisible();
+  await expect(page.getByTestId('attempts')).toHaveText('1');
+  await dialog.getByRole('button', { name: 'Delete', exact: true }).click();
+  await expect(dialog).toBeHidden();
+  await expect(page.getByRole('status')).toHaveText('Deleted');
+  await expect(page.getByRole('button', { name: 'Confirm retry' })).toBeFocused();
+});
+
+test('hold confirmation requires a full hold, cancels on Escape and does not repeat while a key stays down', async ({ page }) => {
+  await page.clock.install();
+  const hold = page.getByRole('button', { name: 'Hold action' });
+  await hold.focus();
+  await page.keyboard.down('Space');
+  await page.clock.fastForward(100);
+  await page.keyboard.up('Space');
+  await page.clock.fastForward(200);
+  await expect(page.getByTestId('holds')).toHaveText('0');
+  await page.keyboard.down('Enter');
+  await page.clock.fastForward(100);
+  await page.keyboard.press('Escape');
+  await page.keyboard.up('Enter');
+  await page.clock.fastForward(200);
+  await expect(page.getByTestId('holds')).toHaveText('0');
+  await page.keyboard.down('Space');
+  await page.evaluate(() => window.dispatchEvent(new Event('blur')));
+  await page.clock.fastForward(250);
+  await page.keyboard.up('Space');
+  await expect(page.getByTestId('holds')).toHaveText('0');
+  await page.keyboard.down('Space');
+  await page.clock.fastForward(250);
+  await expect(page.getByTestId('holds')).toHaveText('1');
+  await page.clock.fastForward(1000);
+  await expect(page.getByTestId('holds')).toHaveText('1');
+  await page.keyboard.up('Space');
+  await page.getByRole('button', { name: 'Disable hold' }).click();
+  await expect(hold).toBeDisabled();
+});

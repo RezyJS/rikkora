@@ -25,6 +25,7 @@ export interface ToastApi {
   dismissAll: () => void;
 }
 export interface ToastQueueProviderProps extends ToastProviderProps {
+  /** Number of notifications in the collapsed stack. Hover or focus reveals the full list. */
   maxVisible?: number;
   /** Fixed toast width: numbers are pixels; defaults to 24rem, capped to the viewport. */
   width?: CSSProperties['width'];

@@ -5,9 +5,9 @@ import styles from './Input.module.css';
 import { useFieldControl } from '../Field/fieldControl';
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type = 'text', invalid, ...rest }, ref) => {
+  ({ className, type = 'text', variant = 'default', underline = false, invalid, ...rest }, ref) => {
     const field = useFieldControl({ ...rest, invalid });
-    return <input {...rest} {...field} ref={ref} type={type} className={cn(styles.input, className)} />;
+    return <input {...rest} {...field} ref={ref} type={type} className={cn(styles.input, styles[variant], variant === 'hover' && underline && styles.underline, className)} />;
   },
 );
 

@@ -4,13 +4,15 @@ export { Textarea } from './components/Textarea';
 export type { TextareaProps } from './components/Textarea';
 
 export { Input } from './components/Input';
-export type { InputProps } from './components/Input';
+export type { InputProps, InputVariant } from './components/Input';
 export { Checkbox } from './components/Checkbox';
 export type { CheckboxProps } from './components/Checkbox';
 
 import './styles/index.css';
 
 export { Button, ButtonLink } from './components/Button';
+export { ButtonGroup, ToggleButton, SplitButton, ConfirmButton, HoldToConfirm } from './components/Button';
+export type { ButtonGroupProps, ToggleButtonProps, SplitButtonProps, ConfirmButtonProps, HoldToConfirmProps } from './components/Button';
 export type { ButtonLinkProps } from './components/Button';
 
 export type {
@@ -18,6 +20,11 @@ export type {
   ButtonSize,
   ButtonRadius,
   ButtonVariant,
+  ButtonTone,
+  ButtonLoadingPlacement,
+  ButtonVisualProps,
+  ButtonFontWeight,
+  ButtonTextTransform,
 } from './components/Button/Button.types';
 
 export { Flex } from './components/Flex';
