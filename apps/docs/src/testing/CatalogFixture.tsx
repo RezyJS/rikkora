@@ -1,13 +1,14 @@
+import { PreferencesControls } from '@/features/preferences-controls';
 import { useState } from 'react';
 import { Box, Button, Flex, Heading } from '@rikkora/ui';
-import { SiteHeader } from '../components/SiteHeader/SiteHeader';
-import { ComponentPlayground } from '../components/Showcase/ComponentPlayground';
+import { SiteHeader } from '@/widgets/site-header';
+import { ComponentPlayground } from '@/features/component-playground';
 import {
   componentNames,
   type ComponentName,
-} from '../components/Showcase/componentNames';
-import { usePreferences } from '../preferences/PreferencesContext';
-import '../index.css';
+} from '@/entities/documentation';
+import { usePreferences } from '@/shared/model/preferences';
+import '../app/styles/index.css';
 
 export function CatalogFixture() {
   const { t } = usePreferences();
@@ -35,6 +36,7 @@ export function CatalogFixture() {
         <ComponentPlayground
           key={name}
           name={name}
+          preferencesControls={<PreferencesControls />}
         />
       </Box>
     </>

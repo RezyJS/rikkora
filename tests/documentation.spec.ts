@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 import { createRequire } from 'node:module';
 import { resolve } from 'node:path';
-import { componentDocs } from '../apps/docs/src/pages/Documentation/componentDocs';
-import { individualProps, propExample } from '../apps/docs/src/pages/Documentation/propExamples';
-import { componentNames } from '../apps/docs/src/components/Showcase/catalog';
-import { introPages } from '../apps/docs/src/pages/Documentation/introPages';
+import { componentDocs } from '../apps/docs/src/entities/documentation';
+import { individualProps, propExample } from '../apps/docs/src/entities/documentation';
+import { componentNames } from '../apps/docs/src/entities/documentation';
+import { introPages } from '../apps/docs/src/entities/documentation';
 
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {

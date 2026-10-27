@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { componentDocs } from '../apps/docs/src/pages/Documentation/componentDocs';
-import { individualProps, propAnchor } from '../apps/docs/src/pages/Documentation/propExamples';
+import { componentDocs } from '../apps/docs/src/entities/documentation';
+import { individualProps, propAnchor } from '../apps/docs/src/entities/documentation';
 
 test.beforeEach(async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });

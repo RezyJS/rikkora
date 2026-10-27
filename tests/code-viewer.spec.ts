@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { componentDocs } from '../apps/docs/src/pages/Documentation/componentDocs';
+import { componentDocs } from '../apps/docs/src/entities/documentation';
 
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {

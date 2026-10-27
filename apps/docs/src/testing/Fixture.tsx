@@ -27,10 +27,11 @@ import '@rikkora/ui/styles.css';
 import { ScrollAreaFixture } from './ScrollAreaFixture';
 import { CompositionFixture } from './CompositionFixture';
 import { CatalogFixture } from './CatalogFixture';
-import { PreferencesProvider } from '../preferences/PreferencesProvider';
+import { PreferencesProvider } from '../app/providers/PreferencesProvider';
 import { BrowserRouter } from 'react-router';
 import { ToastFixture } from './ToastFixture';
 import { IconsFixture } from './IconsFixture';
+import { ButtonFixture } from './ButtonFixture';
 
 const inputRef = createRef<HTMLInputElement>();
 const textareaRef = createRef<HTMLTextAreaElement>();
@@ -374,5 +375,6 @@ createRoot(document.getElementById('root')!).render(
     </BrowserRouter>
   : new URLSearchParams(location.search).has('toasts') ? <ToastFixture />
   : new URLSearchParams(location.search).has('icons') ? <IconsFixture />
+  : new URLSearchParams(location.search).has('buttons') ? <ButtonFixture />
   : <Fixture />,
 );
